@@ -27,7 +27,6 @@
 			const col = row.cells[j];
 			if (col.innerText.indexOf('Too expensive') !== -1) {
 				const cost = parseInt(table.rows[i].cells[j - 1].innerText.match(/(.*) points/g)[0].replace(/^\D+|,/g, ''), 10);
-				console.log(cost);
 				const remainingPoints = cost - currentPoints;
 				const timeLeft = remainingPoints / pointsPerDay;
 				const projectedDate = new Date();
