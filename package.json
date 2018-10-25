@@ -1,0 +1,26 @@
+{
+  "scripts": {
+    "test": "xo"
+  },
+  "devDependencies": {
+    "xo": "^0.23.0"
+  },
+  "name": "ptp-bonus-calculations",
+  "description": "Display points remaining and time left at current daily point rate until you can afford to purchase upload at PTP",
+  "version": "0.0.0",
+  "main": "index.js",
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SavageCore/ptp-bonus-calculations.git"
+  },
+  "keywords": [
+    "userscript"
+  ],
+  "author": "SavageCore",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/SavageCore/ptp-bonus-calculations/issues"
+  },
+  "homepage": "https://github.com/SavageCore/ptp-bonus-calculations#readme"
+}
