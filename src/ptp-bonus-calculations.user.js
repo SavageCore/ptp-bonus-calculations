@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         PTP Bonus Calculations
 // @namespace    https://savagecore.eu
-// @version      0.0.0
+// @version      0.1.0
 // @description  Display points remaining and time left at current daily point rate until you can afford to purchase upload at PTP
 // @author       SavageCore
 // @include      http*://passthepopcorn.me/bonus.php?store=upload

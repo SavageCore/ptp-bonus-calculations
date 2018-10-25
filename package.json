@@ -7,7 +7,7 @@
   },
   "name": "ptp-bonus-calculations",
   "description": "Display points remaining and time left at current daily point rate until you can afford to purchase upload at PTP",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "main": "index.js",
   "dependencies": {},
   "repository": {
