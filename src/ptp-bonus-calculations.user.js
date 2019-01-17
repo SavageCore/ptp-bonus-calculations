@@ -19,7 +19,7 @@
 
 	const currentPoints = parseInt(document.querySelector('#nav_bonus > a:nth-child(1)').innerText.match(/Bonus \((.*)\)/g)[0].replace(/^\D+|,/g, ''), 10);
 	const pointsPerDay = await getPointsPerDay();
-	const table = document.getElementsByClassName('table')[0];
+	const table = document.querySelectorAll('.table')[0];
 
 	for (let i = 0; i < table.rows.length; i++) {
 		const row = table.rows[i];
@@ -37,7 +37,7 @@
 		}
 	}
 
-	async function getPointsPerDay() { // eslint-disable-line require-await
+	async function getPointsPerDay() {
 		return new Promise((resolve, reject) => {
 			const req = new XMLHttpRequest();
 			req.responseType = 'document';
