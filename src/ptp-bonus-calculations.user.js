@@ -17,7 +17,7 @@
 
 	const rateUrl = 'https://passthepopcorn.me/bprate.php';
 
-	const currentPoints = parseInt(document.querySelector('#nav_bonus > a:nth-child(1)').innerText.match(/Bonus \((.*)\)/g)[0].replace(/^\D+|,/g, ''), 10);
+	const currentPoints = parseInt(document.querySelector('#nav_bonus > a:nth-child(1)').textContent.match(/Bonus \((.*)\)/g)[0].replace(/^\D+|,/g, ''), 10);
 	const pointsPerDay = await getPointsPerDay();
 	const table = document.querySelectorAll('.table')[0];
 
@@ -25,8 +25,8 @@
 		const row = table.rows[i];
 		for (let j = 0; j < row.cells.length; j++) {
 			const col = row.cells[j];
-			if (col.innerText.indexOf('Too expensive') !== -1) {
-				const cost = parseInt(table.rows[i].cells[j - 1].innerText.match(/(.*) points/g)[0].replace(/^\D+|,/g, ''), 10);
+			if (col.textContent.includes('Too expensive')) {
+				const cost = parseInt(table.rows[i].cells[j - 1].textContent.match(/(.*) points/g)[0].replace(/^\D+|,/g, ''), 10);
 				const remainingPoints = cost - currentPoints;
 				const timeLeft = remainingPoints / pointsPerDay;
 				const projectedDate = new Date();
@@ -46,7 +46,7 @@
 			req.addEventListener('load', () => {
 				if (req.status === 200) {
 					const dom = req.response;
-					const ret = parseInt(dom.querySelector('table.table:nth-child(5) > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(4)').innerText.replace(/,/g, ''), 10);
+					const ret = parseInt(dom.querySelector('table.table:nth-child(5) > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(4)').textContent.replace(/,/g, ''), 10);
 					resolve(ret);
 				} else {
 					reject(new Error('Unable to load bonus rate page'));
