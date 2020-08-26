@@ -17,7 +17,7 @@
 
 	const rateUrl = 'https://passthepopcorn.me/bprate.php';
 
-	const currentPoints = parseInt(document.querySelector('#nav_bonus > a:nth-child(1)').textContent.match(/Bonus \((.*)\)/g)[0].replace(/^\D+|,/g, ''), 10);
+	const currentPoints = Number.parseInt(document.querySelector('#nav_bonus > a:nth-child(1)').textContent.match(/Bonus \((.*)\)/g)[0].replace(/^\D+|,/g, ''), 10);
 	const pointsPerDay = await getPointsPerDay();
 	const table = document.querySelectorAll('.table')[0];
 
@@ -26,7 +26,7 @@
 		for (let j = 0; j < row.cells.length; j++) {
 			const col = row.cells[j];
 			if (col.textContent.includes('Too expensive')) {
-				const cost = parseInt(table.rows[i].cells[j - 1].textContent.match(/(.*) points/g)[0].replace(/^\D+|,/g, ''), 10);
+				const cost = Number.parseInt(table.rows[i].cells[j - 1].textContent.match(/(.*) points/g)[0].replace(/^\D+|,/g, ''), 10);
 				const remainingPoints = cost - currentPoints;
 				const timeLeft = remainingPoints / pointsPerDay;
 				const projectedDate = new Date();
@@ -39,15 +39,15 @@
 
 	async function getPointsPerDay() {
 		return new Promise((resolve, reject) => {
-			const req = new XMLHttpRequest();
-			req.responseType = 'document';
-			req.open('GET', rateUrl, true);
-			req.send(null);
-			req.addEventListener('load', () => {
-				if (req.status === 200) {
-					const dom = req.response;
-					const ret = parseInt(dom.querySelector('table.table:nth-child(5) > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(4)').textContent.replace(/,/g, ''), 10);
-					resolve(ret);
+			const request = new XMLHttpRequest();
+			request.responseType = 'document';
+			request.open('GET', rateUrl, true);
+			request.send(null);
+			request.addEventListener('load', () => {
+				if (request.status === 200) {
+					const dom = request.response;
+					const returnValue = Number.parseInt(dom.querySelector('table.table:nth-child(5) > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(4)').textContent.replace(/,/g, ''), 10);
+					resolve(returnValue);
 				} else {
 					reject(new Error('Unable to load bonus rate page'));
 				}
