@@ -3,7 +3,7 @@
     "test": "xo"
   },
   "devDependencies": {
-    "xo": "^0.33.0"
+    "xo": "^0.42.0"
   },
   "name": "ptp-bonus-calculations",
   "description": "Display points remaining and time left at current daily point rate until you can afford to purchase upload at PTP",
